@@ -28,6 +28,26 @@
                     }
                 }
                 echo "</script>";
+
+                echo "<style>";
+                echo '.eael-pro-widget{
+                        position: relative;
+                        border: 1px solid #c36 !important;
+                    }
+                    .eael-pro-widget:before{
+                        content: "PRO";
+                        position: absolute;
+                        top: 30%;
+                        left: -9px;
+                        transform: rotate(90deg);
+                        color: #fff;
+                        background: #c36;
+                        line-height: 1;
+                        padding: 2px;
+                        border-radius: 3px;
+                        font-weight: bold;
+                    }';
+                echo "</style>";
             }
         }
     } );
