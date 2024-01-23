@@ -29,27 +29,92 @@
                     }
                 }
                 echo "</script>";
-
-                echo "<style>";
-                echo ".{$class_name}{
-                        position: relative;
-                        border: 1px solid #c36 !important;
-                    }
-                    .{$class_name}:before{
-                        content: 'PRO';
-                        position: absolute;
-                        top: 30%;
-                        left: -9px;
-                        transform: rotate(90deg);
-                        color: #fff;
-                        background: #c36;
-                        line-height: 1;
-                        padding: 2px;
-                        border-radius: 3px;
-                        font-weight: bold;
-                    }";
-                echo "</style>";
             }
+
+            $extensions_set = [
+                'eael-pro-extensions' => [
+                    'title'      => __( 'Premium Extensions', 'essential-addons-for-elementor-lite' ),
+                    'extensions' => [
+                        [
+                            'key'       => 'section-parallax',
+                            'is_pro'    => true
+                        ],
+                        [
+                            'key'       => 'section-particles',
+                            'is_pro'    => true
+                        ],
+                        [
+                            'key'       => 'tooltip-section',
+                            'is_pro'    => true
+                        ],
+                        [
+                            'key'       => 'content-protection',
+                            'is_pro'    => true,
+                            'promotion' => 'popular'
+                        ],
+                        [
+                            'key'       => 'reading-progress',
+                        ],
+                        [
+                            'key'       => 'table-of-content',
+                        ],
+                        [
+                            'key'       => 'post-duplicator',
+                        ],
+                        [
+                            'key'       => 'custom-js',
+                        ],
+                        [
+                            'key'       => 'xd-copy',
+                            'is_pro'    => true,
+                            'promotion' => 'new'
+                        ],
+                        [
+                            'key'       => 'scroll-to-top',
+                        ],
+                        [
+                            'key'       => 'conditional-display',
+                            'is_pro'    => true,
+                            'promotion' => 'new'
+                        ],
+                        [
+                            'key'       => 'wrapper-link',
+                            'promotion' => 'new'
+                        ],
+                    ]
+                ]
+            ];
+            if( is_array( $extensions_set ) && !empty( $extensions_set ) ){
+                echo "<script>";
+                foreach( $extensions_set as $extensions ){
+                    foreach( $extensions[ 'extensions' ] as $extension ){
+                        if( isset( $extension['is_pro'] ) && $extension['is_pro'] ){
+                            echo "jQuery('#{$extension['key']}').closest('.eael-element__item').addClass('{$class_name}');";
+                        }
+                    }
+                }
+                echo "</script>";
+            }
+
+            echo "<style>";
+            echo ".{$class_name}{
+                    position: relative;
+                    border: 1px solid #c36 !important;
+                }
+                .{$class_name}:before{
+                    content: 'PRO';
+                    position: absolute;
+                    top: 30%;
+                    left: -9px;
+                    transform: rotate(90deg);
+                    color: #fff;
+                    background: #c36;
+                    line-height: 1;
+                    padding: 2px;
+                    border-radius: 3px;
+                    font-weight: bold;
+                }";
+            echo "</style>";
         }
     } );
 }
